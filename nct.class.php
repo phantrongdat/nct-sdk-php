@@ -56,19 +56,43 @@ class NCT {
 		return $api;
 	}
 
-	/*
+	
 	public function getSongID($key){
 		if ($key == NULL){
 			return false;
 		}
 
-		$url = "http://www.nhaccuatui.com/bai-hat/fdjhdffd.".$key.".html";
-		$get = $this -> getCurl($url);
+		$url = "http://www.nhaccuatui.com/bai-hat/fdjhdffd-dgad.".$key.".html";
+		$get = file_get_contents($url);
 		preg_match_all('/itemid:(.*),/U', $get, $itemid);
 
-		return $url;
+		return $itemid[1][1];
 	}
-	*/
+
+	public function getVideoID($key){
+		if ($key == NULL){
+			return false;
+		}
+
+		$url = "http://www.nhaccuatui.com/video/fdjhdffd-dgad.".$key.".html";
+		$get = file_get_contents($url);
+		preg_match_all('/itemid:(.*),/U', $get, $itemid);
+
+		return $itemid[1][1];
+	}
+
+	public function getPlaylistID($key){
+		if ($key == NULL){
+			return false;
+		}
+
+		$url = "http://www.nhaccuatui.com/playlist/fdjhdffd-dgad.".$key.".html";
+		$get = file_get_contents($url);
+		preg_match_all('/itemid:(.*),/U', $get, $itemid);
+
+		return $itemid[1][1];
+	}
+	
 
 	/* API about Song */
 
@@ -306,5 +330,101 @@ class NCT {
 
 	/* API VIDEO */
 
-	
+	public function getVideoInfo($id){
+		if (!isset($id) || $id == NULL){
+			return false;
+		}
+
+		$token = $this -> createToken("get-video-detail",$id);
+		$url = $this -> buildURL("get-video-detail",$token,"videoid=".$id);
+
+		$a = $this -> getCurl($url);
+
+		$b = json_decode($a,true);
+
+		if ($b['Result'] == false){
+			return false;
+		}
+
+		return $a;
+	}
+
+	public function getVideoByArtist($id){
+		if (!isset($id) || $id == NULL){
+			return false;
+		}
+
+		$token = $this -> createSearchToken("get-video-by-artist",$id);
+		$url = $this -> buildURL("get-video-by-artist",$token,"artistid=".$id);
+
+		$a = $this -> getCurl($url);
+
+		$b = json_decode($a,true);
+		
+		if ($b['Result'] == false){
+			return false;
+		}
+		
+		return $a;
+	}
+
+	public function getVideoByGene($id){
+		if (!isset($id) || $id == NULL){
+			return false;
+		}
+
+		$token = $this -> createSearchToken("get-video-by-genre",$id);
+		$url = $this -> buildURL("get-video-by-genre",$token,"genreid=".$id);
+
+		$a = $this -> getCurl($url);
+
+		$b = json_decode($a,true);
+		
+		if ($b['Result'] == false){
+			return false;
+		}
+		
+		return $a;
+	}
+
+	public function getVideoSearch($id){
+		if (!isset($id) || $id == NULL){
+			return false;
+		}
+
+		$token = $this -> createSearchToken("search-video",$id);
+		$url = $this -> buildURL("search-video",$token,"keyword=".$id);
+
+		$a = $this -> getCurl($url);
+
+		$b = json_decode($a,true);
+		
+		if ($b['Result'] == false){
+			return false;
+		}
+		
+		return $a;
+	}
+
+	public function getVideoRelated($id){
+		if (!isset($id) || $id == NULL){
+			return false;
+		}
+
+		$token = $this -> createToken("get-video-related",$id);
+		$url = $this -> buildURL("get-video-related",$token,"videoid=".$id);
+
+		$a = $this -> getCurl($url);
+
+		$b = json_decode($a,true);
+		
+		if ($b['Result'] == false){
+			return false;
+		}
+		
+		return $a;
+	}
 }
+
+/* End SDK */
+?>
