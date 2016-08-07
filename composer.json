@@ -5,3 +5,23 @@
         "php": "^5.2 || ^7.0"
     }
 }
+
+{
+    "name": "phuchptty/nct-sdk-php",
+    "type": "library",
+    "description": "Nhaccuatui SKD PHP miễn phí các API",
+    "keywords": ["sdk","api","nct","nhaccuatui"],
+    "homepage": "https://github.com/phuchptty/nct-sdk-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Phúc Phoenix",
+            "email": "phuc.px.371@gmail.com",
+            "homepage": "http://pxdev.ga",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">= 5.2"
+    }
+}
