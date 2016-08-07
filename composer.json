@@ -1,13 +1,5 @@
 {
     "name": "phuchptty/nct-sdk-php",
-    "description": "Nhaccuatui SKD PHP miễn phí các API",
-    "require": {
-        "php": "^5.2 || ^7.0"
-    }
-}
-
-{
-    "name": "phuchptty/nct-sdk-php",
     "type": "library",
     "description": "Nhaccuatui SKD PHP miễn phí các API",
     "keywords": ["sdk","api","nct","nhaccuatui"],
