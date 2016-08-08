@@ -135,9 +135,6 @@ class NCT {
 	}
 
 	public function getSongSearch($keyword){
-		if (!isset($keyword) || $keyword == NULL){
-			return false;
-		}
 
 		$token = $this -> createSearchToken("search-song",$keyword);
 		$url = $this -> buildURL("search-song",$token,"keyword=".$keyword);
@@ -272,9 +269,6 @@ class NCT {
 	}
 
 	public function getPlaylistSearch($id){
-		if (!isset($id) || $id == NULL){
-			return false;
-		}
 
 		$token = $this -> createSearchToken("search-playlist",$id);
 		$url = $this -> buildURL("search-playlist",$token,"keyword=".$id);
@@ -388,9 +382,6 @@ class NCT {
 	}
 
 	public function getVideoSearch($id){
-		if (!isset($id) || $id == NULL){
-			return false;
-		}
 
 		$token = $this -> createSearchToken("search-video",$id);
 		$url = $this -> buildURL("search-video",$token,"keyword=".$id);
