@@ -36,6 +36,7 @@ class NCT {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 		curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
 		$page = curl_exec($ch);
 		curl_close($ch);
@@ -63,7 +64,7 @@ class NCT {
 		}
 
 		$url = "http://www.nhaccuatui.com/bai-hat/fdjhdffd-dgad.".$key.".html";
-		$get = file_get_contents($url);
+		$get = $this -> getCurl($url);
 		preg_match_all('/itemid:(.*),/U', $get, $itemid);
 
 		return $itemid[1][1];
@@ -75,7 +76,7 @@ class NCT {
 		}
 
 		$url = "http://www.nhaccuatui.com/video/fdjhdffd-dgad.".$key.".html";
-		$get = file_get_contents($url);
+		$get = $this -> getCurl($url);
 		preg_match_all('/itemid:(.*),/U', $get, $itemid);
 
 		return $itemid[1][1];
@@ -87,7 +88,7 @@ class NCT {
 		}
 
 		$url = "http://www.nhaccuatui.com/playlist/fdjhdffd-dgad.".$key.".html";
-		$get = file_get_contents($url);
+		$get = $this -> getCurl($url);
 		preg_match_all('/itemid:(.*),/U', $get, $itemid);
 
 		return $itemid[1][1];
