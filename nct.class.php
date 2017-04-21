@@ -9,7 +9,7 @@
 		+ Facebook: https://facebook.com/hoangphuchotboy
 		+ Twitter : @phoenix371
 		+ GitHub  : phuchptty
-	* The URL API is Open by anbinh (https://github.com/anbinh)
+	* The URL API are Open by anbinh (https://github.com/anbinh)
 
 This is END */
 
